@@ -53,7 +53,7 @@ export async function confirmTrip(app: FastifyInstance) {
 
       await Promise.all(
         trip.participants.map(async (participant) => {
-          const confirmationLink = `http://localhost:3333/trips/${trip.id}/confirm/${participant.id}`;
+          const confirmationLink = `http://localhost:3333/participants/${participant.id}/confirm`;
 
           const message = await mail.sendMail({
             from: {
@@ -65,7 +65,7 @@ export async function confirmTrip(app: FastifyInstance) {
             html: `
           <div style="font-family: sans-serif; font-size: 16px; line-height: 1.6">
             <p>
-              Voçê foi convidado(a) para participar de uma viagem para <strong>${trip.destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>
+              Você foi convidado(a) para participar de uma viagem para <strong>${trip.destination}</strong> nas datas de <strong>${formattedStartDate}</strong> até <strong>${formattedEndDate}</strong>
             </p>
             <p></p>
             <p>Para confirmar sua presença na viagem, clique no link abaixo:</p>
