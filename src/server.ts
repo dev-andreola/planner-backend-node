@@ -7,10 +7,12 @@ import {
 } from "fastify-type-provider-zod";
 import { confirmTrip } from "./routes/confirm-trip";
 import { confirmParticipants } from "./routes/confirm-participant";
+import { getParticipants } from "./routes/get-participants";
 import { createActivity } from "./routes/create-activity";
 import { getActivities } from "./routes/get-activities";
 import { CreateLink } from "./routes/create-link";
 import { getLinks } from "./routes/get-links";
+import { CreateInvite } from "./routes/create-invite";
 
 const app = fastify();
 
@@ -25,6 +27,8 @@ app.register(createTrip);
 app.register(confirmTrip);
 
 app.register(confirmParticipants);
+app.register(getParticipants);
+app.register(CreateInvite);
 
 app.register(createActivity);
 app.register(getActivities);
