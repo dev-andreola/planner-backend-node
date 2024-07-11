@@ -19,13 +19,14 @@ export async function confirmTrip(app: FastifyInstance) {
     async (req, reply) => {
       const { tripId } = req.params;
 
-      // QUERIE
+      // QUERIE PARA SELECIONAR PARTICIPANTES DA VIAGEM QUE RECEBERÃO O EMAIL
       const trip = await prisma.trip.findUnique({
         where: {
           id: tripId,
         },
         include: {
           participants: {
+            // O OWNER JÁ RECEBEU O EMAIL
             where: {
               is_owner: false,
             },
